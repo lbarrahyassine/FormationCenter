@@ -286,7 +286,8 @@ public class EnrollmentManagementPanel extends JPanel {
                 // Find the client and formation IDs
                 Client client = findClientByName(clientName);
                 Formation formation = findFormationByTitle(formationTitle);
-
+                System.out.println(client);
+                System.out.println(formation);
                 if (client != null && formation != null) {
                     if (enrollmentDAO.deleteEnrollment(client.getClientId(), formation.getFormationId())) {
                         JOptionPane.showMessageDialog(this,
@@ -360,7 +361,7 @@ public class EnrollmentManagementPanel extends JPanel {
         try {
             List<Client> clients = clientDAO.getAllClients();
             for (Client client : clients) {
-                if (client.getLastname().equals(name) || client.getFirstname().equals(name)) {
+                if (client.toString().equals(name)) {
                     return client;
                 }
             }
